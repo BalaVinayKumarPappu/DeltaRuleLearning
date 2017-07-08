@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C58F2449-5FD2-4FA1-8A72-172D8B0ED212}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A737B032-EADC-405C-8FF2-8F3E628F54B2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DeltaRuleLearningNew", "src\DeltaRuleLearningNew\DeltaRuleLearningNew.xproj", "{9B03909D-BDE9-402A-A65B-E7FB5642BDCA}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "UnitTest", "src\UnitTest\UnitTest.xproj", "{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B03909D-BDE9-402A-A65B-E7FB5642BDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B03909D-BDE9-402A-A65B-E7FB5642BDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B03909D-BDE9-402A-A65B-E7FB5642BDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B03909D-BDE9-402A-A65B-E7FB5642BDCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B03909D-BDE9-402A-A65B-E7FB5642BDCA} = {C58F2449-5FD2-4FA1-8A72-172D8B0ED212}
+		{642F9415-B7B1-4C9B-A38B-B0F088E2DB2F} = {C58F2449-5FD2-4FA1-8A72-172D8B0ED212}
+	EndGlobalSection
+EndGlobal
