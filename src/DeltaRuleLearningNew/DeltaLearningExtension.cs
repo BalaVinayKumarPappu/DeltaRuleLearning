@@ -6,18 +6,18 @@ using LearningFoundation;
 
 namespace DeltaLearning
 {
-    public static class drlextension
+    public static class DeltaLearningExtension
     {
         public static LearningApi UseDeltaRuleLearning(this LearningApi api, double learningRate, int iterations)
         {
 
-            //this is the place where you invoke the class of the algorithm to use
+            //Invoking the class of the algorithm to use
             var alg = new DeltaLearning(iterations);
 
-            //now we add this algorithm(new instancec of the class) to the learning api
+            //now we add this algorithm(new instance of the class) to the learning api
             api.AddModule(alg, "Delta Learning");
 
-            //after adding the instance to the api return the api
+            //after adding the instance to the api, return the api
             return api;
         }
 

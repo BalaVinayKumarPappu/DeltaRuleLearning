@@ -19,10 +19,10 @@ namespace UnitTest
 
 
         /// <summary>
-        /// Performs the DeltaRule Learning  on specified dataset with 10 iteration and 0.15 learning rate.
+        /// Performs the DeltaRule Learning  on specified dataset with 1000 iteration and 0.2f learning rate.
         /// </summary>
         [Fact]
-        public void DeltaRuleLearning_Test_iterations_100_learningrate_013()
+        public void DeltaRuleLearning_Test_iterations_1000_learningrate_02()
         {
             loadRealDataSample();
 
@@ -36,12 +36,8 @@ namespace UnitTest
             });
 
             // run input = UseActionModule output 
-
-            // Use mapper for data, which will extract (map) required columns 
-            //api.UseDefaultDataMapper();
-           
-            //run logistic regression for 10 iterations with learningRate=0.13
-            api.UseDeltaRuleLearning(0.13, 1000);
+            //run Delta Rule for 1000 iterations with learningRate=0.13
+            api.UseDeltaRuleLearning(0.2, 1000);
             var result = api.Run() as double[];
             Debug.WriteLine("************ Output Predictions***********");
             for (int i = 0; i < result.Length; i++)
@@ -73,7 +69,8 @@ namespace UnitTest
                 }
             }
              for (int i = 0; i < to.Length; i++)
-             {
+             {  
+                //Testing of Test data with Predicted System model 
                 Assert.Equal(Math.Round(result[i], 4), Math.Round(to[i], 4));
             }
 

@@ -8,7 +8,7 @@ namespace DeltaLearning
 {
     public class DeltaLearningScore : IScore
     {
-        public double[] Errors { get; set; }
+        public double[] Errors { get; set; } 
 
         public double[] Weights { get; set; }
 

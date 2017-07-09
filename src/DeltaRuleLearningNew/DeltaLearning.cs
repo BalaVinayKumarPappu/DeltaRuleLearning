@@ -8,29 +8,29 @@ using System.IO;
 
 namespace DeltaLearning
 {
-
+    //Defining Input and Output values.
     public class DeltaLearning : IPipelineModule<double[], double[]>
     {
-        static int I = 1000;
+        static int I = 1000;//Number of Iterations
         static double[] Input = new double[I];
         static double[] Desired = new double[I];
-        double[] W = new double[10] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        double[] W = new double[10] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };//Initial Weights
         static double[] TestInput = new double[I];
         static double[] TestDesired = new double[I];
-        static int M = 10;
-        static double mu = 0.2f;
-        static double[] H;
+        static int M = 10;//order of filter
+        static double mu = 0.2f;//convergence rate
+        static double[] H;//main system to convolution
         double[] errorsReduced = new double[I];
 
 
         public double[] Predict(double[] data, IContext ctx)
         {
             
-            Array.Reverse(W);
+            Array.Reverse(W);//Inversing of  Predicted system coefficients. 
             for (int i = 0; i < data.Length; i++)
                 for (int j = 0; j < M; j++)
                     if (i - j >= 0)
-                        TestDesired[i] += data[i - j] * W[j];
+                        TestDesired[i] += data[i - j] * W[j];//Desired Test Output
 
             return TestDesired;
         }
@@ -60,8 +60,8 @@ namespace DeltaLearning
                         double.TryParse(val[0], out x);
                         double.TryParse(val[1], out y);
 
-                        ti[i] = x;
-                        to[i] = y;
+                        ti[i] = x;//Input data for Prediction 
+                        to[i] = y;//Output data for prediction
                     }
                 }
             }
@@ -92,13 +92,9 @@ namespace DeltaLearning
                     else break;
                 }
 
-                D = Desired[T];                 //desired signal
+                D = Desired[T];                 //desired system signal
 
                 Y = 0;                      //filter’output set to zero
-                                            //X = Input;
-
-
-                //co = new double[Input.Length];
                 for (int i = 0; i < M; i++)
                 {
                     Y += (W[i] * X[i]);         //calculate filter output    
@@ -121,7 +117,6 @@ namespace DeltaLearning
 
                 }
                 //update filter coefficients
-                //w = W[T];
                 Console.WriteLine("y_out" + (float)T + "=" + Y);
                 Console.WriteLine("error" + (float)T + "=" + E);
 
@@ -131,7 +126,6 @@ namespace DeltaLearning
             {
                 Console.WriteLine("weights" + T + "=" + W[i]);
                 Console.WriteLine("inside forloop");
-                // weights.Write(test, T, (int)W[i]);
             }
 
             ctx.Score.Errors = errorsReduced;
