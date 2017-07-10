@@ -24,19 +24,19 @@ namespace UnitTest
         [Fact]
         public void DeltaRuleLearning_Test_iterations_1000_learningrate_02()
         {
-            loadRealDataSample();
+            loadRealDataSample();// System coefficients initialization.
 
-            var desc = loadMetaData();
+            var desc = loadMetaData();// Description of the system.
             LearningApi api = new LearningApi(desc);
 
             //Real dataset must be defined as object type, because data can be numeric, binary and classification
             api.UseActionModule<double[], double[]>((input, ctx) =>
             {
-                return loadRealDataSample();
+                return loadRealDataSample(); // return actual System coefficients data
             });
 
             // run input = UseActionModule output 
-            //run Delta Rule for 1000 iterations with learningRate=0.13
+            //run Delta Rule for 1000 iterations with learningRate=0.2
             api.UseDeltaRuleLearning(0.2, 1000);
             var result = api.Run() as double[];
             Debug.WriteLine("************ Output Predictions***********");
@@ -72,14 +72,14 @@ namespace UnitTest
              {  
                 //Testing of Test data with Predicted System model 
                 Assert.Equal(Math.Round(result[i], 4), Math.Round(to[i], 4));
-            }
-
-            
-                   
+            }   
             
                     
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private DataDescriptor loadMetaData()
         {
 

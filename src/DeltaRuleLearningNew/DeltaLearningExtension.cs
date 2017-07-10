@@ -8,6 +8,13 @@ namespace DeltaLearning
 {
     public static class DeltaLearningExtension
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="api">Context <seealso cref"LearningFoundation.LearningApi"></param></param>
+        /// <param name="learningRate"></param>
+        /// <param name="iterations"></param>
+        /// <returns></returns>
         public static LearningApi UseDeltaRuleLearning(this LearningApi api, double learningRate, int iterations)
         {
 

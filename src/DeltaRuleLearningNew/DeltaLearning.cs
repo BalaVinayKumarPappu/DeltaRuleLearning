@@ -8,7 +8,10 @@ using System.IO;
 
 namespace DeltaLearning
 {
-    //Defining Input and Output values.
+    /// <summary>
+    /// Defining Input and Output values
+    /// 
+    /// </summary>
     public class DeltaLearning : IPipelineModule<double[], double[]>
     {
         static int I = 1000;//Number of Iterations
@@ -22,20 +25,30 @@ namespace DeltaLearning
         static double[] H;//main system to convolution
         double[] errorsReduced = new double[I];
 
-
-        public double[] Predict(double[] data, IContext ctx)
+        /// <summary>
+        /// Prediction for the model
+        /// </summary>
+        /// <param name="data"> Input values from the file to predict </param>
+        /// <param name="ctx">Context <seealso cref"LearningFoundation.IContext"></param>
+        /// <returns></returns>
+        public double[] Predict(double[] testinputdata, IContext ctx)
         {
             
             Array.Reverse(W);//Inversing of  Predicted system coefficients. 
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < testinputdata.Length; i++)
                 for (int j = 0; j < M; j++)
                     if (i - j >= 0)
-                        TestDesired[i] += data[i - j] * W[j];//Desired Test Output
+                        TestDesired[i] += testinputdata[i - j] * W[j];//Desired Test Output
 
             return TestDesired;
         }
-
-    public double[] Run(double[] data, IContext ctx)
+        /// <summary>
+        /// Runinng to update the weights to model the filter
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="ctx">Context <seealso cref"LearningFoundation.IContext"></param>
+        /// <returns></returns>
+        public double[] Run(double[] data, IContext ctx)
         {
             double x, y;
             double[] to = null;
@@ -69,7 +82,12 @@ namespace DeltaLearning
 
 
         }
-
+        /// <summary>
+        /// Training the filter coefficients of the adaptive filter model 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="ctx">Context <seealso cref"LearningFoundation.IContext"></param>
+        /// <returns></returns>
         public IScore Train(double[] data, IContext ctx)
         {
             if (ctx.Score as DeltaLearningScore == null)
@@ -135,12 +153,17 @@ namespace DeltaLearning
             return ctx.Score;
         }
 
-
+        /// <summary>
+        /// initializing the algorithm
+        /// </summary>
+        /// <param name="Itr"></param>
         public DeltaLearning(int Itr)
         {
             I = Itr;
         }
-
+        /// <summary>
+        /// Assigning Inout and desired output values
+        /// </summary>
         private static void preInitialize()
         {
             Console.WriteLine("inside preinitialize");
@@ -151,6 +174,9 @@ namespace DeltaLearning
             }
         }
 
+        /// <summary>
+        /// Initializing the input and desired output
+        /// </summary>
       
         private static void initialize()
         {
