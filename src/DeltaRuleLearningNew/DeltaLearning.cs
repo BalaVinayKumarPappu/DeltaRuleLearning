@@ -12,18 +12,18 @@ namespace DeltaLearning
     /// Defining Input and Output values
     /// 
     /// </summary>
-    public class DeltaLearning : IPipelineModule<double[], double[]>
+    public class DeltaLearning : IPipelineModule<double[,], double[]>
     {
-        static int I = 1000;//Number of Iterations
-        static double[] Input = new double[I];
-        static double[] Desired = new double[I];
+        static int It = 1000;//Number of Iterations
+        static double[] Input = new double[It];
+        static double[] Desired = new double[It];
         double[] W = new double[10] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };//Initial Weights
-        static double[] TestInput = new double[I];
-        static double[] TestDesired = new double[I];
+        static double[] TestInput = new double[It];
+        static double[] TestDesired = new double[It];
         static int M = 10;//order of filter
         static double mu = 0.2f;//convergence rate
         static double[] H;//main system to convolution
-        double[] errorsReduced = new double[I];
+        double[] errorsReduced = new double[It];
 
         /// <summary>
         /// Prediction for the model
@@ -48,14 +48,14 @@ namespace DeltaLearning
         /// <param name="data"></param>
         /// <param name="ctx">Context <seealso cref"LearningFoundation.IContext"></param>
         /// <returns></returns>
-        public double[] Run(double[] data, IContext ctx)
+        public double[] Run(double[,] data, IContext ctx)
         {
             double x, y;
             double[] to = null;
             double[] ti = null;
-            H = data;
+            //Inp = data;
             preInitialize();
-            initialize();
+          //  initialize();
             Train(data, ctx);
             using (var fs = File.OpenRead(@"H_Test.csv"))
             using (var reader = new StreamReader(fs))
@@ -88,7 +88,7 @@ namespace DeltaLearning
         /// <param name="data"></param>
         /// <param name="ctx">Context <seealso cref"LearningFoundation.IContext"></param>
         /// <returns></returns>
-        public IScore Train(double[] data, IContext ctx)
+        public IScore Train(double[,] data, IContext ctx)
         {
             if (ctx.Score as DeltaLearningScore == null)
                 ctx.Score = new DeltaLearningScore();
@@ -101,16 +101,20 @@ namespace DeltaLearning
             double Y, D, E;
             double[] X = new double[10] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
             byte[] test = new byte[100];
-            for (T = 0; T < I; T++)
+            for (T = 0; T < It; T++)
             {
                 for (int m = T; m > T - M; m--)
                 {
                     if (m >= 0)
-                        X[M + (m - T) - 1] = Input[m];  //X new input sample for LMS filter
+                        X[M + (m - T) - 1] = data[m,0];  //X new input sample for LMS filter
                     else break;
                 }
 
-                D = Desired[T];                 //desired system signal
+                   // X[0] = data[T, 0];
+                
+              
+                
+                D = data[T,1];             //desired system signal
 
                 Y = 0;                      //filter’output set to zero
                 for (int i = 0; i < M; i++)
@@ -159,7 +163,7 @@ namespace DeltaLearning
         /// <param name="Itr"></param>
         public DeltaLearning(int Itr)
         {
-            I = Itr;
+            It = Itr;
         }
         /// <summary>
         /// Assigning Inout and desired output values
@@ -167,7 +171,7 @@ namespace DeltaLearning
         private static void preInitialize()
         {
             Console.WriteLine("inside preinitialize");
-            for (int i = 0; i < I; i++)
+            for (int i = 0; i < It; i++)
             {
                 Input[i] = 0;
                 Desired[i] = 0;
@@ -182,10 +186,10 @@ namespace DeltaLearning
         {
             Console.WriteLine("inside intialize");
             Random rand = new Random();
-            for (int i = 0; i < I; i++)
+            for (int i = 0; i < It; i++)
                 Input[i] = rand.NextDouble();
 
-            for (int i = 0; i < I; i++)
+            for (int i = 0; i < It; i++)
                 for (int j = 0; j < M; j++)
                     if (i - j >= 0)
                         Desired[i] += Input[i - j] * H[j];

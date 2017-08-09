@@ -1,5 +1,5 @@
---temp-output:C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\UnitTest\obj\Debug\netcoreapp1.0\
---out:C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\UnitTest\bin\Debug\netcoreapp1.0\UnitTest.dll
+--temp-output:C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\UnitTest\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\UnitTest\bin\Debug\netcoreapp1.0\UnitTest.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -109,7 +109,7 @@
 --reference:C:\Users\Vinnu\.nuget\packages\xunit.extensibility.execution\2.3.0-beta3-build3705\lib\netstandard1.1\xunit.execution.dotnet.dll
 --reference:C:\Users\Vinnu\.nuget\packages\xunit.runner.reporters\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.reporters.dotnet.dll
 --reference:C:\Users\Vinnu\.nuget\packages\xunit.runner.utility\2.2.0-beta2-build3300\lib\netstandard1.1\xunit.runner.utility.dotnet.dll
---reference:C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\DeltaRuleLearningNew\bin\Debug\netcoreapp1.0\DeltaRuleLearningNew.dll
-C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\UnitTest\Program.cs
-C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\UnitTest\Test.cs
-C:\Users\Vinnu\Source\Repos\DeltaRuleLearning\src\UnitTest\Properties\AssemblyInfo.cs
+--reference:C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\DeltaRuleLearningNew\bin\Debug\netcoreapp1.0\DeltaRuleLearningNew.dll
+C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\UnitTest\Program.cs
+C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\UnitTest\Test.cs
+C:\Users\Vinnu\Documents\Visual Studio 2015\Projects\BalaVinayKumarPappu\DeltaRuleLearning\src\UnitTest\Properties\AssemblyInfo.cs
