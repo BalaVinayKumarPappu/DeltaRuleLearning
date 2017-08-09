@@ -167,7 +167,7 @@ namespace UnitTest
         }
 
 
-        private double[,] loadRealDataSample()
+        private object[][] loadRealDataSample()
         {
             
             double inp,oup ;
@@ -196,12 +196,12 @@ namespace UnitTest
                 }
             }
 
-            var data = new double[I.Length,2];
+            var data = new object[I.Length][2];
 
              for (int i1 = 0; i1 < I.Length; i1++)
             {
-                data[i1,0] = I[i1];
-                data[i1, 1] = O[i1];
+                data[i1][0] = I[i1];
+                data[i1][1] = O[i1];
             }
             return data;
             
